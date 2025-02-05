@@ -1,5 +1,6 @@
 /// @description Вставьте описание здесь
 // Вы можете записать свой код в этом редакторе
+depth = 50
 mask_index = sprPlayerHitbox
 var left = keyboard_check(ord("A"))
 var right = keyboard_check(ord("D"))
@@ -87,6 +88,10 @@ sprite_index = sprPlayerIdle
 }
 if place_meeting(tox,toy,objWall){
 objBlockCode.play = false
+audio_play_sound(sndFail,1,0)
+var text = instance_create_depth(0,0,0,objCoolText)
+text.header = "Алгоритм прерван"
+text.desc = "Столкновение со стеной"
 if x != xstart and y != ystart{
 x = xstart
 y = ystart
@@ -111,6 +116,10 @@ prod2place = place_meeting(x,y,objTriggerProd2)
 prod3place = place_meeting(x,y,objTriggerProd3)
 prod4place = place_meeting(x,y,objTriggerProd4)
 cassplace = place_meeting(x,y,objTriggerCass)
+if room = Room145{
+	boxplace = place_meeting(x,y,trigBoxes)
+	truckplace = place_meeting(x,y,trigTruck)
+}
 if !objBlockCode.play{
 x = xstart
 y = ystart
@@ -122,6 +131,8 @@ lever.image_index = 0
 
 }
 eaten = false
+objBlockCode.boxes = 0
+box = false
 global.detal = 0
 detal = false
 instance_destroy(objDetal)

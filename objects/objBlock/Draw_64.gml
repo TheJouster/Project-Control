@@ -18,16 +18,20 @@ var GUIxx = (x+4 - camera_get_view_x(view_camera[0])) * (gui_height / view_heigh
 	
 var GUIx = (x - camera_get_view_x(view_camera[0])) * (gui_height / view_height);
 
-
-
-
 /*
 draw_set_color(c_white)	
 draw_set_font(fntGUI)
 draw_set_valign(fa_middle)
-draw_text_shadow(GUIxx,GUIyy,text,c_white,c_black,1)
-draw_text_shadow(GUIxx-128,GUIyy,order,c_white,c_black,1)
-draw_text_shadow(GUIxx-256,GUIyy,y,c_white,c_black,1)
+draw_text_shadow(16,16+(32*order),c_objects,c_white,c_black,1)
+
+
+draw_set_color(c_white)	
+draw_set_font(fntGUI)
+draw_set_valign(fa_middle)
+draw_text_shadow(GUIxx-128,GUIyy,drag,c_white,c_black,1)
+draw_text_shadow(GUIxx-96,GUIyy,prevorder,c_white,c_black,1)
+draw_text_shadow(GUIxx-64,GUIyy,order,c_white,c_black,1)
+draw_text_shadow(GUIxx-32,GUIyy,toy,c_white,c_black,1)
 if dr{
 draw_text_shadow(GUIxx-64,GUIyy,instance_place(x,y,objBlock),c_white,c_black,1)	
 }

@@ -29,3 +29,5 @@ fruits = 0
 fruitsmax = irandom_range(3,5)
 widthinstance = noone
 
+boxes = 0
+drag_instance = noone

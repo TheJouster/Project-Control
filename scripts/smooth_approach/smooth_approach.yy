@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "smooth_approach",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Approach Value",
-    "path": "folders/Scripts/Essential Scripts/Approach Value.yy",
+  "$GMScript":"v1",
+  "%Name":"smooth_approach",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"smooth_approach",
+  "parent":{
+    "name":"Approach Value",
+    "path":"folders/Scripts/Essential Scripts/Approach Value.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -11,4 +11,4 @@ audio_stop_all()
 audio_play_sound(sndCar,1,0)
 rspeed = 0
 
-strange = choose(false,false,false,false,false,false,true)
+strange = false

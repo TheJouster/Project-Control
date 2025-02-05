@@ -31,7 +31,7 @@ image_angle+= rspeed
 if room = Room5{
 if x >= room_width+96{
 
-SlideTransition(TRANS_MODE.GOTO,Room14)	
+SlideTransition(TRANS_MODE.GOTO,Room145)	
 
 }
 if x > room_width+32{

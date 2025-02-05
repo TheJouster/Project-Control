@@ -13,13 +13,12 @@ ini_write_real("Main","Tip3",1)
 ini_close()
 	}
 }
-var cond = instance_create_depth(room_width-16*image_xscale,(8*array_length(objBlockCode.blocks)),-999,objCondition)
-var cond1 = instance_create_depth(room_width-16*image_xscale,(8*(array_length(objBlockCode.blocks)+1)),-999,objConditionEnd)
-//cond.order = (array_length(blocks))
+var cond = instance_create_depth(room_width-16*image_xscale,(8*array_length(objBlockCode.blocks))+global.yst,-999,objCondition)
+
+cond.order = array_length(objBlockCode.blocks)
+cond.y = 8*(array_length(objBlockCode.blocks))+global.yst
 cond.toy = 8*(array_length(objBlockCode.blocks))
-//cond1.order = (array_length(blocks)+1)
-cond1.toy = 8*(array_length(objBlockCode.blocks)+1)
-cond1.creator = cond
-cond.condend = cond1
+
+
 audio_play_sound(sndPop2,1,0)
 

@@ -20,7 +20,7 @@ var GUIxx = (x+4 - camera_get_view_x(view_camera[0])) * (gui_height / view_heigh
 var GUIx = (x - camera_get_view_x(view_camera[0])) * (gui_height / view_height);
 
    if drag{	
-draw_sprite_ext(sprMoveUI,0,GUIx,GUIy,image_xscale,image_yscale,0,-1,1)	
+draw_sprite_ext(sprActionUI,0,GUIx,GUIy,image_xscale,image_yscale,0,-1,1)	
 }
 
  

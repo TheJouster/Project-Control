@@ -1,7 +1,7 @@
 /// @description Вставьте описание здесь
 // Вы можете записать свой код в этом редакторе
 depth = -999
-order = 0
+
 drag_offset_x = 0;
 drag_offset_y = 0;
 drag_x = x;
@@ -10,12 +10,11 @@ drag = false;
 loop = 1
 looped = 0
 text = "Loop"
-toy = 0
 completed = false
 creator = noone
-condend = noone
+loopend = noone
 out = false
-condend = noone
+loopend = noone
 moving = false
 hsp = 0
 vsp = 0
@@ -24,3 +23,12 @@ dr = false
 condition = 0
 cond = false
 conditioncount = 7
+alarm[0] = 2
+xx = 0
+dx = 0
+dy = 0
+c_objects = []
+drag_objects = []
+prevorder = 0
+place = false;
+sprite_index = sprCheck

@@ -20,7 +20,7 @@ var GUIxx = (x - camera_get_view_x(view_camera[0])) * (gui_height / view_height)
 var GUIx = (x - camera_get_view_x(view_camera[0])) * (gui_height / view_height);
 
 
- if !objBlockCode.play{
+ if !objBlockCode.play and !instance_exists(objCoolText)and !instance_exists(objTip){
 draw_set_color(c_white)	
 draw_set_font(fntGUI)
 draw_set_valign(fa_middle)

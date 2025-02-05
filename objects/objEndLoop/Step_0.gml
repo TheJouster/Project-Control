@@ -17,6 +17,7 @@ if loop < 1{
 loop = 1	
 }
 
+if creator != noone{
 if instance_exists(creator){
 if creator.loop > 0{
 if objBlockCode.play{
@@ -50,20 +51,34 @@ objBlockCode.blocks[i].looped = 0
 }	
 }
 }
+}
 
 
 
-
-
+if creator != noone{
 if !instance_exists(creator){
 instance_destroy()	
 }else{
 if mouse_over(){
 creator.out = true	
+out = true
 }else{
 creator.out = false	
+out = false
 }
 }
-if y >= 0{
-objBlockCode.blocks[order] = id
+}
+if !drag{
+	if order >= 0{
+
+		objBlockCode.blocks[order] = id
+
+		array_set(objBlockCode.blocks,order,id)
+
+	}
+}else{
+	
+	if order > array_length(objBlockCode.blocks)-1{
+		array_push(objBlockCode.blocks,noone)	
+	}
 }

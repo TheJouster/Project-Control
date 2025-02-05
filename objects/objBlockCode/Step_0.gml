@@ -18,13 +18,24 @@ order = 0
 play = false
 }
 
-if array_length(blocks) > instance_number(objBlock){
-array_delete(blocks,instance_number(objBlock),array_length(blocks))
-}
+
+
+
 for (var i = 0;i<array_length(blocks);i++){
-if place_free(room_width-8,8+(16*i)){
-array_delete(blocks,i,1)	
+	if drag_instance == noone{
+		if instance_place(room_width-8,4+(8*i)+global.yst,objBlock) == noone{
+			array_set(blocks,i,noone)
+		}
+	}
 }
+
+
+
+
+if drag_instance == noone{
+	if instance_place(room_width-8,4+(8*array_length(blocks)-1)+global.yst,objBlock) == noone{
+		array_delete(blocks,array_length(blocks)-1,1)
+	}
 }
 
 if window_mouse_get_x() < display_get_gui_width()/2{
@@ -65,4 +76,9 @@ if room = Room147{
 if objBlockCode.fruits = objBlockCode.fruitsmax and objBlockCode.milk = objBlockCode.milkmax and objBlockCode.vegetables = objBlockCode.vegetablesmax and objBlockCode.snacks = objBlockCode.snacksmax{
 SlideTransition(TRANS_MODE.GOTO,Room38)	
 }
+}
+if room = Room145{
+	if boxes = 10{
+		SlideTransition(TRANS_MODE.GOTO,Room14)	
+	}
 }

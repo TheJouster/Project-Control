@@ -13,3 +13,4 @@ sprite_index = sprLoop
 sprite_index = sprButton		
 }
 depth = -999
+x = (room_width/2)-(sprite_width/2)

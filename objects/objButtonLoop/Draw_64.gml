@@ -19,14 +19,14 @@ var GUIx = (x - camera_get_view_x(view_camera[0])) * (gui_height / view_height);
 
  if !objBlockCode.play{
 
-draw_sprite_ext(sprLoopUI,0,GUIx+20,GUIy+24,2.5,1,0,-1,1)	
+draw_sprite_ext(sprLoopUI,0,GUIx+20,GUIy+8,2.75,1,0,-1,1)	
 
 
  
 draw_set_color(c_white)	
 draw_set_font(fntGUI)
 draw_set_valign(fa_middle)
-draw_text_shadow(GUIx+36,GUIy+40,"Сделать X раз",c_white,c_black,1)
+draw_text_shadow(GUIx+36,GUIy+24,"Сделать X раз",c_white,c_black,1)
 
 
 draw_reset_text()

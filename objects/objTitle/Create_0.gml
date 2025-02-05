@@ -6,7 +6,9 @@ alp3 = 0
 alp4 = 0
 alp5 = 0
 
-alarm[0] = 1500
+
+alarm[0] = 1200	
+
 
 if room = Room38{
 audio_stop_all()

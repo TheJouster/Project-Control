@@ -49,99 +49,99 @@ text = "Пока не Приобретено Достаточно Снеков, 
 
 
 
-
-if instance_exists(condend){
+if loopend != noone{
+if instance_exists(loopend){
 if objBlockCode.play{
 if objBlockCode.order = order{
 if condition == 0{
 if objPlayer.rplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 1{
 if objPlayer.uplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 2{
 if objPlayer.lplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 3{
 if objPlayer.dplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 4{
 if !objPlayer.rplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 5{
 if !objPlayer.uplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 6{
 if !objPlayer.lplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 7{
 if !objPlayer.dplace{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 8{
 if objBlockCode.fruits != objBlockCode.fruitsmax and objBlockCode.milk != objBlockCode.milkmax and objBlockCode.vegetables != objBlockCode.vegetablesmax and objBlockCode.snacks != objBlockCode.snacksmax{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 9{
 if objBlockCode.fruits != objBlockCode.fruitsmax{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 10{
 if objBlockCode.milk != objBlockCode.milkmax{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 11{
 if objBlockCode.vegetables != objBlockCode.vegetablesmax{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }else if condition == 12{
 if objBlockCode.snacks != objBlockCode.snacksmax{
 cond = true	
 }else{
-objBlockCode.order = condend.order+1
+objBlockCode.order = loopend.order+1
 cond = false	
 }
 }
@@ -151,7 +151,7 @@ cond = false
 }
 }
 
-
+}
 
 if condition > conditioncount{
 condition = 0	
@@ -161,22 +161,80 @@ condition = conditioncount
 }
 
 
-if y >= 0{
-objBlockCode.blocks[order] = id
-if instance_exists(condend){
-objBlockCode.blocks[condend.order] = condend.id
-}
 
-
-}
-
-if !instance_exists(condend){
+if loopend != noone{
+if !instance_exists(loopend){
 instance_destroy()	
 }else{
 if mouse_over(){
-condend.out = true	
+loopend.out = true	
 }else{
-condend.out = false	
+loopend.out = false	
 }
+}
+}
+if !drag{
+	if order >= 0{
+		objBlockCode.blocks[order] = id
+		if order = array_length(objBlockCode.blocks)-1{
+			array_push(objBlockCode.blocks,id)	
+		}
+		array_set(objBlockCode.blocks,order,id)
+	}
+}else{
+	if order > array_length(objBlockCode.blocks)-1{
+		array_push(objBlockCode.blocks,noone)	
+	}
+}
+if alarm[2] < 0{
+	alarm[2] = 2	
 }
 
+if drag{
+		
+	if objBlockCode.drag_instance = id{
+		if instance_exists(loopend){
+			if loopend.drag{
+				loopend.drag_x = drag_x+loopend.dx
+				loopend.drag_y = drag_y+loopend.dy				
+			}
+		}	
+		if array_length(drag_objects) > 0{
+			var drag_place = [];
+
+			for (var i = 0; i < array_length(drag_objects);i++){
+				if instance_exists(drag_objects[i]){
+					if drag_objects[i].place != noone and !drag_objects[i].place.drag{
+						array_push(drag_place,true)
+					}else{
+						array_push(drag_place,false)
+					}
+					drag_objects[i].drag_x = drag_x+drag_objects[i].dx
+					drag_objects[i].drag_y = drag_y+drag_objects[i].dy
+					drag_objects[i].order = order+i+1
+				}
+			}
+			if array_contains(drag_place,true) or loopend.place != noone or place_meeting(x,y,objBlock){
+				order = prevorder	
+				toy = (8 * order)+global.yst
+				for (var i = 0; i < array_length(drag_objects);i++){
+					if instance_exists(drag_objects[i]){
+						if drag_objects[i].order != drag_objects[i].prevorder{
+							drag_objects[i].order = drag_objects[i].prevorder
+							drag_objects[i].toy = (8 * drag_objects[i].order)+global.yst
+						}
+					}
+				}	
+				loopend.order = loopend.prevorder	
+				loopend.toy = (8 * loopend.order)+global.yst
+			}else{		
+					
+			}
+		}
+	}
+	if instance_exists(loopend){
+		if loopend.drag{
+			loopend.order = order+ceil((loopend.y-y)/8)
+		}
+	}
+}
